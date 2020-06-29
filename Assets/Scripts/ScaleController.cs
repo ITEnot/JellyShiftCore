@@ -46,24 +46,22 @@ public class ScaleController : MonoBehaviour
 
     }
 
-    public void calculateSize(float y)
+    void calculateSize(float y)
     {
             float sizePercent = y / yRange;
           
-            if (transform.localScale.y >= minScale.y && transform.localScale.y <= maxScale.y)
-            {
-                float newY = transform.localScale.y + transform.localScale.y * sizePercent;
-                float newX = (float)Math.Cos(newY) + 1.5f ;
+            float newY = transform.localScale.y + transform.localScale.y * sizePercent;
+            float newX = (float)Math.Cos(newY) + 1.5f ;
 
-                if (newY < minScale.y)
-                    newY = minScale.y;
+            if (newY < minScale.y)
+                newY = minScale.y;
 
-                if (newY > maxScale.y)
-                    newY = maxScale.y;
-                transform.localScale = new Vector3(newX, newY, transform.localScale.z);
-            }
+            if (newY > maxScale.y)
+                newY = maxScale.y;
+            transform.localScale = new Vector3(newX, newY, transform.localScale.z);
+            
 
-        transform.localPosition = new Vector3(
+            transform.localPosition = new Vector3(
                 transform.localPosition.x,
                 transform.localScale.y * 0.5f,
                 transform.localPosition.z
